@@ -2,7 +2,8 @@ package urlFetcher.testUtil;
 
 import urlFetcher.model.UrlResource;
 
-import static urlFetcher.model.FetchStatus.*;
+import static urlFetcher.model.FetchStatus.FAILED;
+import static urlFetcher.model.FetchStatus.SUCCESS;
 
 public final class TestData {
     public static final String URL_EXAMPLE = "http://example.com";
@@ -24,9 +25,5 @@ public final class TestData {
         resource.setStatus(FAILED);
         resource.setError(error);
         return resource;
-    }
-
-    public static UrlResource createResource(String url) {
-        return new UrlResource(url);
     }
 }
