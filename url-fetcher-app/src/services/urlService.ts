@@ -1,7 +1,6 @@
 import axios from 'axios';
 import type { UrlStatus, UrlDetail, SubmitResponse } from '../types';
-
-const API_BASE_URL = "http://localhost:8080/urls";
+import { API_BASE_URL } from '../config/constants';
 
 export const urlService = {
   submitUrls: async (urls: string[]): Promise<SubmitResponse> => {
