@@ -1,12 +1,8 @@
-import React from 'react';
 import UrlForm from './components/UrlForm';
-import UrlList from './components/UrlList';
-import ContentDisplay from './components/ContentDisplay';
-import { useUrlFetcher } from './hooks/useUrlFetcher';
+import UrlResultsViewer from './components/UrlResultsViewer';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
-  const { statuses, selectedDetail, isLoadingDetail, submit, select } = useUrlFetcher(3000);
-
   return (
     <div className="h-screen w-screen overflow-hidden bg-gray-100">
       <div className="h-full w-full flex flex-col">
@@ -16,27 +12,12 @@ function App() {
         </header>
 
         <div className="px-6 flex-shrink-0">
-          <UrlForm onSubmit={submit} />
+          <UrlForm/>
         </div>
 
-        <main className="flex-1 px-6">
-          <div className="h-full grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1 h-full overflow-auto min-h-0">
-              <UrlList
-                items={statuses}
-                onSelect={select}
-                selectedUrl={selectedDetail?.url}
-              />
-            </div>
-
-            <div className="lg:col-span-2 h-full min-h-0">
-              <div className="h-full overflow-auto min-h-0">
-                <ContentDisplay data={selectedDetail} isLoading={isLoadingDetail} />
-              </div>
-            </div>
-          </div>
-        </main>
+        <UrlResultsViewer/>
       </div>
+      <Toaster position="top-right" />
     </div>
   );
 }
