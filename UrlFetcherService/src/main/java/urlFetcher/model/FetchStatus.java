@@ -1,4 +1,4 @@
-package urlFetcher.models;
+package urlFetcher.model;
 
 public enum FetchStatus {
     PENDING,
