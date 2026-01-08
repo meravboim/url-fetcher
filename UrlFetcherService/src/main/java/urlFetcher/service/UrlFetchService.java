@@ -21,6 +21,11 @@ public class UrlFetchService {
     private final HttpFetchService fetchService;
 
     public void submitUrls(List<String> urls) {
+        if (urls == null || urls.isEmpty()) {
+            log.debug("No URLs provided to submit urls");
+            return;
+        }
+
         urls.forEach(this::saveAndFetchUrl);
     }
 
@@ -49,6 +54,7 @@ public class UrlFetchService {
 
     private void validateContentAvailability(UrlResource resource) {
         if (resource.getStatus() != SUCCESS && resource.getError() == null) {
+            log.warn("Content not yet available for url={} status={}", resource.getUrl(), resource.getStatus());
             throw new UnreachableUrlContentException("Content not available", resource.getUrl());
         }
     }
