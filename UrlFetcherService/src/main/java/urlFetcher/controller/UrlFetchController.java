@@ -1,13 +1,14 @@
-package urlFetcher.controllers;
+package urlFetcher.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import urlFetcher.models.UrlContentResponse;
-import urlFetcher.models.UrlStatusResponse;
-import urlFetcher.models.UrlSubmissionRequest;
-import urlFetcher.services.UrlFetchService;
+import urlFetcher.dto.UrlContentResponse;
+import urlFetcher.dto.UrlStatusResponse;
+import urlFetcher.dto.UrlSubmissionRequest;
+import urlFetcher.exception.UnreachableUrlContentException;
+import urlFetcher.service.UrlFetchService;
 
 import java.util.List;
 

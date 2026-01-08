@@ -1,23 +1,21 @@
-package urlFetcher.services;
+package urlFetcher.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import urlFetcher.models.UrlFetchTask;
+import urlFetcher.model.UrlResource;
 
-import static urlFetcher.models.FetchStatus.FAILED;
-import static urlFetcher.models.FetchStatus.SUCCESS;
+import static urlFetcher.model.FetchStatus.FAILED;
+import static urlFetcher.model.FetchStatus.SUCCESS;
 
+@RequiredArgsConstructor
 @Service
 public class HttpFetchService {
-    private final RestTemplate restTemplate = new RestTemplate();
-
-    public HttpFetchService() {
-        super();
-    }
+    private final RestTemplate restTemplate;
 
     @Async
-    public void fetch(UrlFetchTask task) {
+    public void fetch(UrlResource task) {
         try {
             String body = restTemplate.getForObject(task.getUrl(), String.class);
             task.setContent(body);
@@ -28,4 +26,3 @@ public class HttpFetchService {
         }
     }
 }
-

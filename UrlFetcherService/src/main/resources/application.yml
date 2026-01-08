@@ -1,17 +1,6 @@
 server:
   port: 8080
 
-#OffHoursPushDetector
-offHours:
-  start:
-    hour: 14
-    minute: 0
-  end:
-    hour: 16
-    minute: 0
-
-# RapidRepoLifecycleDetector
-repositoryMinLifetimeMinutes: 10
-
-# InvalidTeamNameDetector
-invalidTeamNamePrefix: hacker
+# Rest template configuration
+connectTimeoutSeconds: 5
+readTimeoutSeconds: 10
